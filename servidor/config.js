@@ -21,18 +21,18 @@ const config = {
   DATABASE_URL: process.env.DATABASE_URL,
 
   // Control de acceso DESACTIVADO por defecto (mal)
-  AUTH_ENABLED: process.env.AUTH_ENABLED === 'true' ? true : false,
+  //AUTH_ENABLED: process.env.AUTH_ENABLED === 'true' ? true : false,
 
   // Parametros de Keycloak (IAM)
-  KEYCLOAK_URL: process.env.KEYCLOAK_URL || 'http://localhost:8080',
+  KEYCLOAK_URL: process.env.KEYCLOAK_URL || 'https://upgraded-barnacle-jw9pvgjpj4jhj7v4-8080.app.github.dev/',
   KEYCLOAK_REALM: process.env.KEYCLOAK_REALM || 'appmovil',
 
   PUERTO: process.env.PORT || 3000,
 
-  AUTH_ENABLED: true,
+  AUTH_ENABLED: process.env.NODE_ENV !== 'test',
 
-  KEYCLOAK_URL: 'http://localhost:8080',
-  KEYCLOAK_REALM: 'mi-realm'
+  /*KEYCLOAK_URL: 'https://upgraded-barnacle-jw9pvgjpj4jhj7v4-8080.app.github.dev/',
+  KEYCLOAK_REALM: 'appmovil'*/
 };
 
 module.exports = config;
