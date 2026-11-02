@@ -28,6 +28,11 @@ const config = {
   KEYCLOAK_REALM: process.env.KEYCLOAK_REALM || 'appmovil',
 
   PUERTO: process.env.PORT || 3000,
+
+  AUTH_ENABLED: true,
+
+  KEYCLOAK_URL: 'http://localhost:8080',
+  KEYCLOAK_REALM: 'mi-realm'
 };
 
 module.exports = config;
