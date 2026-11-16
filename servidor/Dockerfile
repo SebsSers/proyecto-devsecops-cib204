@@ -1,13 +1,13 @@
-FROM node:20-slim AS build
+FROM node:24-alpine AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci --omit=dev
 COPY *.js ./
-FROM node:20-slim
+FROM node:24-alpine
 WORKDIR /app
-RUN useradd --system --no-create-home appuser
+RUN addgroup -S appuser && adduser -S -D -H -G appuser appuser
 COPY --from=build /app /app
-RUN chown -R appuser:appuser /app
+RUN chown -R appuser:appuser /app && rm -rf /usr/local/lib/node_modules/npm /usr/local/lib/node_modules/corepack /usr/local/bin/npm /usr/local/bin/npx /usr/local/bin/corepack
 USER appuser
 EXPOSE 3000
 CMD ["node","servidor.js"]
