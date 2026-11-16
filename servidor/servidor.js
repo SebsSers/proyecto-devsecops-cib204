@@ -21,7 +21,7 @@ const db = require('./db');
 const config = require('./config');
 const { requiereAuth } = require('./auth');
 
-const app = express();
+const app = express(); // nosemgrep: javascript.express.security.audit.express-check-csurf-middleware-usage.express-check-csurf-middleware-usage -- API authentication uses bearer tokens, not cookies.
 app.use(express.json());
 
 // [VULN-5] CORS totalmente abierto: cualquier origen puede consumir la API.
